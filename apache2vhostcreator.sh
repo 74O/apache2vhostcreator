@@ -20,6 +20,7 @@ sudo chmod -R 755 /var/www
 # CREANDO PAGINA DE EJEMPLO
 sudo touch $rutapache/$nombrehost/public/index.html
 sudo printf "\n\n<html><head><title>¡Bienvenido a $nombrehost! </title></head><body><h1>¡Lo lograste! El virtual host $nombrehost está funcionando</h1></body></html>\n\n" | sudo tee $rutapache/$nombrehost/public/index.html
+sudo chmod -R 755 /var/www
 
 # CREANDO VIRTUAL HOST
 sudo touch /etc/apache2/sites-available/$nombrehost.conf
