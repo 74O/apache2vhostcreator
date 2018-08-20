@@ -9,6 +9,7 @@ sudo apt-get install -y apache2
 # ESTABLECIENDO VARIABLES
 rutapache=/var/www
 read -p "Introduce el nombre del host: " nombrehost
+read -p "Introduce el puerto para conectar al host: " puertohost
 read -p "Introduce email del admin: " sadmin
 
 
@@ -24,7 +25,7 @@ sudo chmod -R 755 /var/www
 
 # CREANDO VIRTUAL HOST
 sudo touch /etc/apache2/sites-available/$nombrehost.conf
-sudo printf "<VirtualHost *:80>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>\n" | sudo tee /etc/apache2/sites-available/$nombrehost.conf
+sudo printf "<VirtualHost *:$puertohost>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>\n" | sudo tee /etc/apache2/sites-available/$nombrehost.conf
 # HABILITANDO VIRTUAL HOST
 sudo a2ensite $nombrehost.conf
 sudo a2dissite 000-default.conf
