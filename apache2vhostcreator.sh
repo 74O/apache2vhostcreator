@@ -19,7 +19,7 @@ sudo chmod -R 755 /var/www
 
 # CREANDO VIRTUAL HOST
 sudo printf "<VirtualHost *:$puertohost>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n" | sudo tee /etc/apache2/sites-available/$nombrehost.conf
-sudo printf "ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>\n\n\n" | sudo tee -a /etc/apache2/sites-available/$nombrehost.conf
+sudo printf "ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n\n\n    ErrorDocument 404 /custom_404.html\n    ErrorDocument 500 /custom_50x.html\n    ErrorDocument 502 /custom_50x.html\n    ErrorDocument 503 /custom_50x.html\n    ErrorDocument 504 /custom_50x.html\n</VirtualHost>\n\n\n" | sudo tee -a /etc/apache2/sites-available/$nombrehost.conf
 sudo printf "Listen $puertohost\n" | sudo tee -a /etc/apache2/ports.conf
 sudo a2ensite $nombrehost.conf
 
