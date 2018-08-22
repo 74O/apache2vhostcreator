@@ -18,11 +18,10 @@ sudo printf "\n\n<html><head><title>¡Bienvenido a $nombrehost! </title></head><
 sudo chmod -R 755 /var/www
 
 # CREANDO VIRTUAL HOST
-sudo a2dissite 000-default.conf
-sudo printf "<VirtualHost *:$puertohost>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n" | sudo tee -a /etc/apache2/sites-available/000-default.conf
-sudo printf "ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>\n\n\n" | sudo tee -a /etc/apache2/sites-available/000-default.conf
+sudo printf "<VirtualHost *:$puertohost>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n" | sudo tee /etc/apache2/sites-available/$nombrehost.conf
+sudo printf "ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>\n\n\n" | sudo tee -a /etc/apache2/sites-available/$nombrehost.conf
 sudo printf "Listen $puertohost\n" | sudo tee -a /etc/apache2/ports.conf
-sudo a2ensite 000-default.conf
+sudo a2ensite $nombrehost.conf
 
 # REINICIANDO APACHE
 sudo service apache2 restart
