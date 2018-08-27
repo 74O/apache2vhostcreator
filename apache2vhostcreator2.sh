@@ -7,7 +7,7 @@ rutapache=/var/www
 newHost(){
         nombrehost=$1
         puertohost=$2
-        sadmin=paskuini@gmail.com
+        sadmin=$3
 
         # CREANDO ESTRUCTURA DE DIRECTORIOS
                 sudo mkdir -p $rutapache/$nombrehost/public
