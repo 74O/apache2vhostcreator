@@ -20,8 +20,8 @@ newHost(){
         # CREANDO VIRTUAL HOST
                 sudo printf "<VirtualHost *:$puertohost>\n    ServerAdmin $sadmin\n    ServerName $nombrehost\n    ServerAlias $nombrehost\n    DocumentRoot $rutapache/$nombrehost/public\n" | sudo tee /etc/apache2/sites-available/$nombrehost.conf
                 sudo printf "    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\n" | sudo tee -a /etc/apache2/sites-available/$nombrehost.conf
-                sudo printf "    <Directory \"$rutapache/$nombrehost/public\">" | sudo tee -a /etc/apache2/ports.conf
-                sudo printf "        php_value session.save_path \"$rutapache/$nombrehost/\"" | sudo tee -a /etc/apache2/ports.conf
+                sudo printf "    <Directory \"$rutapache/$nombrehost/public\">\n" | sudo tee -a /etc/apache2/ports.conf
+                sudo printf "        php_value session.save_path \"$rutapache/$nombrehost/\"\n" | sudo tee -a /etc/apache2/ports.conf
                 sudo printf "    </Directory>" | sudo tee -a /etc/apache2/ports.conf
                 sudo printf "\n\n    ErrorDocument 404 /404.html\n    ErrorDocument 401 /401.html\n    ErrorDocument 500 /50x.html\n    ErrorDocument 502 /50x.html\n    ErrorDocument 503 /50x.html\n    ErrorDocument 504 /50x.html\n</VirtualHost>\n\n\n" | sudo tee -a /etc/apache2/sites-available/$nombrehost.conf
                 sudo printf "Listen $puertohost\n" | sudo tee -a /etc/apache2/ports.conf
