@@ -15,7 +15,7 @@ newHost(){
                 sudo chown -R $USER:$USER $rutapache/$nombrehost/public
                 sudo chmod -R 755 /var/www
         # CREANDO PAGINA DE EJEMPLO
-                sudo touch $rutapache/$nombrehost/public/index.html
+                #sudo touch $rutapache/$nombrehost/public/index.html
                 #sudo printf "\n\n<html><head><title>¡Bienvenido a $nombrehost! </title></head><body><h1>Lo lograste! El virtual host $nombrehost est&aacute; funcionando</h1></body></html>\n\n" | sudo tee $rutapache/$nombrehost/public/index.html
                 sudo chmod -R 755 /var/www
         # CREANDO VIRTUAL HOST
