@@ -30,3 +30,4 @@ newHost(){
 }
 
 newHost $1 $2 $3
+#sudo nano /etc/apache2/mods-enabled/dir.conf

@@ -27,3 +27,4 @@ sudo a2ensite $nombrehost.conf
 
 # REINICIANDO APACHE
 sudo service apache2 restart
+#sudo nano /etc/apache2/mods-enabled/dir.conf
